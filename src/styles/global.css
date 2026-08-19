@@ -1,13 +1,15 @@
-@import 'tailwindcss';
-@import '@fontsource-variable/instrument-sans';
-@import '@fontsource/instrument-serif';
-@import '@fontsource/ibm-plex-mono/400.css';
-@import '@fontsource/ibm-plex-mono/500.css';
+@import "tailwindcss";
+@import "@fontsource-variable/instrument-sans";
+@import "@fontsource/instrument-serif";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
 
 @theme {
-  --font-sans: 'Instrument Sans Variable', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-sans:
+    "Instrument Sans Variable", "Instrument Sans", ui-sans-serif, system-ui,
+    sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --color-paper: oklch(0.955 0.018 85);
   --color-ink: oklch(0.22 0.025 50);
   --color-muted: oklch(0.22 0.025 50 / 0.58);

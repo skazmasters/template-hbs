@@ -1,8 +1,8 @@
 ---
+import Btn from '../ui/Btn.astro'
 import Section from './Section.astro'
 import Subsection from './Subsection.astro'
 import Widget from './Widget.astro'
-import Btn from '../ui/Btn.astro'
 ---
 
 <Section title="Buttons" id="buttons">
@@ -21,6 +21,9 @@ import Btn from '../ui/Btn.astro'
         <Btn label="Small" size="small" />
         <Btn label="Large" size="large" />
       </div>
+    </Widget>
+    <Widget title="Icon" width={240}>
+      <Btn label="Close" icon="close" button />
     </Widget>
   </Subsection>
 </Section>

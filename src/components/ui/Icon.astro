@@ -14,4 +14,4 @@ const match = Object.entries(icons).find(([file]) => file.endsWith(`/${name}.svg
 const svg = match?.[1] ?? ''
 ---
 
-<span class:list={['icon inline-flex size-5 items-center justify-center [&_svg]:size-full', mode]} set:html={svg} />
+<span class:list={['icon inline-flex size-5 items-center justify-center [&_svg]:size-full', mode]} aria-hidden="true" set:html={svg} />

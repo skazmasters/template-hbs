@@ -15,6 +15,8 @@ jobs:
           node-version: 22
           cache: yarn
       - run: yarn install --frozen-lockfile
+      - run: yarn lint
+      - run: yarn typecheck
       - run: yarn build
       - run: npx playwright install --with-deps chromium
       - run: yarn screenshots

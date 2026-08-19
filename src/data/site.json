@@ -1,0 +1,6 @@
+{
+  "name": "HTML Starter",
+  "description": "Static multi-page layout starter for client handoff.",
+  "site": "https://skazmasters.github.io",
+  "base": "/template-hbs"
+}

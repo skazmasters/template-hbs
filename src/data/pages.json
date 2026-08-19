@@ -1,10 +1,10 @@
 {
-  "siteName": "Starter Template",
   "pages": [
     {
       "slug": "uikit",
       "href": "/uikit/",
       "title": "UI Kit",
+      "description": "Colors, buttons, forms, and native dialogs.",
       "order": 0,
       "screenshot": true
     },
@@ -12,6 +12,7 @@
       "slug": "home",
       "href": "/home/",
       "title": "Home",
+      "description": "Homepage frame. Keep the route, swap the markup.",
       "order": 1,
       "screenshot": true
     },
@@ -19,6 +20,7 @@
       "slug": "about",
       "href": "/about/",
       "title": "About",
+      "description": "Nested file-based routes start here.",
       "order": 2,
       "screenshot": true
     },
@@ -26,6 +28,7 @@
       "slug": "about-level2",
       "href": "/about/level2/",
       "title": "About Level 2",
+      "description": "Second nested plate under About.",
       "order": 3,
       "screenshot": true
     },
@@ -33,6 +36,7 @@
       "slug": "about-level3",
       "href": "/about/level2/level3/",
       "title": "About Level 3",
+      "description": "Deepest example route in the starter.",
       "order": 4,
       "screenshot": true
     },
@@ -40,6 +44,7 @@
       "slug": "404",
       "href": "/404.html",
       "title": "404",
+      "description": "Missing plate.",
       "order": 5,
       "screenshot": true
     }
