@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string
+  id?: string
+}
+
+const { title, id } = Astro.props
+---
+
+<details class="group border-b border-rule" id={id} open>
+  <summary class="cursor-pointer list-none py-5 font-serif text-3xl tracking-tight marker:content-none after:float-right after:font-mono after:text-sm after:text-muted after:content-['+'] group-open:after:content-['–']">
+    {title}
+  </summary>
+  <div class="pb-10">
+    <slot />
+  </div>
+</details>

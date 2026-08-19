@@ -1,0 +1,22 @@
+---
+interface Props {
+  name: string
+  hex: string
+  rgb: string
+  dark?: boolean
+}
+
+const { name, hex, rgb, dark = false } = Astro.props
+---
+
+<tr class="border-t border-rule">
+  <td class="cursor-pointer py-3 pr-4" data-copy={name}>{name}</td>
+  <td class="cursor-pointer py-3 pr-4" data-copy={hex}>
+    <span
+      class:list={['inline-block size-7 rounded-full', dark && 'ring-1 ring-ink']}
+      style={`background-color: ${rgb}`}
+    ></span>
+  </td>
+  <td class="cursor-pointer py-3 pr-4" data-copy={hex}>{hex}</td>
+  <td class="cursor-pointer py-3" data-copy={rgb}>{rgb}</td>
+</tr>

@@ -1,0 +1,47 @@
+---
+import PopupBase from './Base.astro'
+import Input from '../ui/Input.astro'
+import Btn from '../ui/Btn.astro'
+
+interface Props {
+  id: string
+  success?: boolean
+  failure?: boolean
+}
+
+const { id, success = false, failure = false } = Astro.props
+const normal = !success && !failure
+---
+
+<PopupBase id={id}>
+  {
+    success && (
+      <div>
+        <h2 class="font-serif text-3xl">Call booked</h2>
+        <p class="mt-3 text-muted">We usually call back within ten minutes.</p>
+        <div class="mt-6">
+          <Btn label="Close" size="large" button close mod="w-full" />
+        </div>
+      </div>
+    )
+  }
+  {
+    failure && (
+      <div>
+        <h2 class="font-serif text-3xl">Not sent</h2>
+        <p class="mt-3 text-muted">The form still has your data. Try again.</p>
+      </div>
+    )
+  }
+  {
+    normal && (
+      <div class="flex flex-col gap-4">
+        <h2 class="font-serif text-3xl">Request a call</h2>
+        <Input placeholder="Name" />
+        <Input placeholder="Phone" />
+        <Input placeholder="Comment" />
+        <Btn label="Send" size="large" button mod="w-full" />
+      </div>
+    )
+  }
+</PopupBase>

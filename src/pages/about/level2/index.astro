@@ -1,0 +1,19 @@
+---
+import Default from '../../../layouts/Default.astro'
+---
+
+<Default title="About Level 2" current="about-level2">
+  <main class="grid min-h-[calc(100svh-8rem)] lg:grid-cols-2">
+    <section class="flex flex-col justify-end bg-ink px-[4vw] py-16 text-paper">
+      <p class="mb-6 font-mono text-[11px] tracking-[0.18em] text-paper/55 uppercase">03 · Nested</p>
+      <h1 class="font-serif text-[clamp(3.5rem,8vw,6.5rem)] leading-[0.85] tracking-tight">
+        Level two
+      </h1>
+    </section>
+    <section class="flex flex-col justify-end px-[4vw] py-16">
+      <p class="max-w-sm text-lg leading-relaxed text-muted">
+        File-based nesting, no <code class="font-mono text-ink">--</code> in the filename. Invert a pane when you need contrast in the index screenshots.
+      </p>
+    </section>
+  </main>
+</Default>

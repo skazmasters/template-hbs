@@ -1,0 +1,69 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/instrument-sans';
+@import '@fontsource/instrument-serif';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+@theme {
+  --font-sans: 'Instrument Sans Variable', 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Instrument Serif', ui-serif, Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --color-paper: oklch(0.955 0.018 85);
+  --color-ink: oklch(0.22 0.025 50);
+  --color-muted: oklch(0.22 0.025 50 / 0.58);
+  --color-rule: oklch(0.22 0.025 50 / 0.12);
+  --color-accent: oklch(0.62 0.19 40);
+  --color-accent-hover: oklch(0.56 0.18 38);
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-paper font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent text-paper;
+  }
+}
+
+@layer components {
+  .grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.55'/></svg>");
+  }
+
+  dialog {
+    @apply m-auto w-[min(32rem,calc(100vw-2rem))] rounded-none border border-rule bg-paper p-8 text-ink shadow-none;
+  }
+
+  dialog::backdrop {
+    @apply bg-ink/45;
+  }
+
+  [data-copy-toast] {
+    @apply pointer-events-none fixed bottom-8 left-1/2 z-20 -translate-x-1/2 bg-ink px-4 py-2 font-mono text-xs tracking-wide text-paper uppercase opacity-0 transition;
+  }
+
+  [data-copy-toast][data-active] {
+    @apply opacity-100;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .grain {
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+---
+import Section from './Section.astro'
+import Subsection from './Subsection.astro'
+import Widget from './Widget.astro'
+import Btn from '../ui/Btn.astro'
+---
+
+<Section title="Buttons" id="buttons">
+  <Subsection>
+    <Widget title="Fill" width={240}>
+      <Btn label="Button" />
+    </Widget>
+    <Widget title="Outline" width={240}>
+      <Btn label="Button" outline />
+    </Widget>
+    <Widget title="Ink" width={240}>
+      <Btn label="Button" color="secondary" />
+    </Widget>
+    <Widget title="Small / large" width={280}>
+      <div class="flex flex-wrap gap-2">
+        <Btn label="Small" size="small" />
+        <Btn label="Large" size="large" />
+      </div>
+    </Widget>
+  </Subsection>
+</Section>

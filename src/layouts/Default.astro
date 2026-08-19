@@ -1,0 +1,21 @@
+---
+import Base from './Base.astro'
+import Header from '../components/layout/Header.astro'
+import Footer from '../components/layout/Footer.astro'
+
+interface Props {
+  title: string
+  current?: string
+}
+
+const { title, current } = Astro.props
+---
+
+<Base title={title}>
+  <div class="flex min-h-svh flex-col">
+    <Header current={current} />
+    <slot />
+    <Footer />
+  </div>
+  <script src="../scripts/theme.ts"></script>
+</Base>
