@@ -1,0 +1,22 @@
+---
+import Default from '../../layouts/Default.astro'
+---
+
+<Default title="About" current="about" description="Nested file-based routes start here.">
+  <main class="grid min-h-[calc(100svh-8rem)] items-end gap-16 px-[4vw] py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:pt-28">
+    <div>
+      <p class="mb-6 font-mono text-[11px] tracking-[0.18em] text-muted uppercase">02 · About</p>
+      <h1 class="font-serif text-[clamp(3.75rem,9vw,8rem)] leading-[0.82] tracking-tight">
+        Nested<br />routes.
+      </h1>
+    </div>
+    <div class="max-w-md self-end pb-4 lg:pt-32">
+      <p class="text-lg leading-relaxed text-muted">
+        Folders become URLs. Keep <code class="font-mono text-ink">/about/</code>, then drop real copy and modules in its place.
+      </p>
+      <p class="mt-6 font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
+        /about/level2 → /about/level2/level3
+      </p>
+    </div>
+  </main>
+</Default>

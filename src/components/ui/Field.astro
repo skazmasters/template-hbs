@@ -1,0 +1,19 @@
+---
+interface Props {
+  id?: string
+  label?: string
+  note?: string
+}
+
+const { id, label, note } = Astro.props
+---
+
+<div class="flex w-full flex-col gap-2">
+  {label && (
+    <label class="font-mono text-[11px] tracking-[0.14em] uppercase" for={id}>
+      {label}
+    </label>
+  )}
+  <slot />
+  {note && <span class="text-xs text-muted">{note}</span>}
+</div>

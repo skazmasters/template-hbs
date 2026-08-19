@@ -1,0 +1,80 @@
+---
+import Icon from './Icon.astro'
+
+interface Props {
+  label?: string
+  href?: string
+  button?: boolean
+  type?: 'button' | 'submit' | 'reset'
+  size?: 'small' | 'large'
+  color?: 'secondary'
+  outline?: boolean
+  icon?: string
+  popup?: string
+  close?: boolean
+  mod?: string
+  disabled?: boolean
+  ariaLabel?: string
+}
+
+const {
+  label,
+  href,
+  button = false,
+  type = 'button',
+  size,
+  color,
+  outline = false,
+  icon,
+  popup,
+  close = false,
+  mod = '',
+  disabled = false,
+  ariaLabel,
+} = Astro.props
+
+const asLink = Boolean(href) && !button
+const external = Boolean(href?.startsWith('http'))
+const className = [
+  'inline-flex cursor-pointer items-center justify-center gap-2 border px-5 font-sans text-[11px] tracking-[0.16em] uppercase transition-colors disabled:cursor-not-allowed disabled:opacity-40',
+  size === 'small' && 'h-9 px-4 text-[10px]',
+  size === 'large' && 'h-12 px-7',
+  !size && 'h-10',
+  outline
+    ? 'border-ink bg-transparent text-ink hover:bg-ink hover:text-paper'
+    : color === 'secondary'
+      ? 'border-ink bg-ink text-paper hover:bg-accent hover:border-accent'
+      : 'border-accent bg-accent text-paper hover:bg-accent-hover hover:border-accent-hover',
+  mod,
+]
+  .filter(Boolean)
+  .join(' ')
+---
+
+{
+  asLink ? (
+    <a
+      href={href}
+      class={className}
+      data-popup={popup}
+      aria-label={ariaLabel}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noreferrer' : undefined}
+    >
+      {icon && <Icon name={icon} />}
+      {label}
+    </a>
+  ) : (
+    <button
+      type={type}
+      class={className}
+      data-popup={popup}
+      data-close={close ? '' : undefined}
+      aria-label={ariaLabel}
+      disabled={disabled}
+    >
+      {icon && <Icon name={icon} />}
+      {label}
+    </button>
+  )
+}

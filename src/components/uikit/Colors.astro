@@ -1,0 +1,23 @@
+---
+import ColorRow from './ColorRow.astro'
+---
+
+<section id="colors" class="border-b border-rule pb-10">
+  <h2 class="mb-6 font-serif text-3xl tracking-tight">Colors</h2>
+  <table class="w-full text-left text-sm">
+    <thead class="font-mono text-[10px] tracking-[0.14em] text-muted uppercase">
+      <tr>
+        <th class="pb-3 font-normal">Name</th>
+        <th class="pb-3 font-normal">Swatch</th>
+        <th class="pb-3 font-normal">Hex</th>
+        <th class="pb-3 font-normal">RGB</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ColorRow name="paper" hex="#F4EFE4" rgb="oklch(0.955 0.018 85)" />
+      <ColorRow name="ink" hex="#1C1814" rgb="oklch(0.22 0.025 50)" />
+      <ColorRow name="accent" hex="#C45C1A" rgb="oklch(0.62 0.19 40)" />
+      <ColorRow name="muted" hex="#6F685F" rgb="oklch(0.22 0.025 50 / 0.58)" />
+    </tbody>
+  </table>
+</section>

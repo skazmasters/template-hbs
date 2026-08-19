@@ -1,0 +1,19 @@
+---
+interface Props {
+  id?: string
+  placeholder?: string
+  mod?: string
+}
+
+const { id, placeholder, mod } = Astro.props
+---
+
+<textarea
+  id={id}
+  autocomplete="off"
+  placeholder={placeholder}
+  class:list={[
+    'min-h-28 w-full border border-rule bg-transparent px-3 py-2 text-sm outline-none placeholder:text-muted focus:border-ink',
+    mod,
+  ]}
+></textarea>

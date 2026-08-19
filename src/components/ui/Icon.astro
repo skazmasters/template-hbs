@@ -1,0 +1,17 @@
+---
+interface Props {
+  name: string
+  mode?: string
+}
+
+const { name, mode } = Astro.props
+const icons = import.meta.glob<string>('../../assets/svg/inline/*.svg', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+})
+const match = Object.entries(icons).find(([file]) => file.endsWith(`/${name}.svg`))
+const svg = match?.[1] ?? ''
+---
+
+<span class:list={['icon inline-flex size-5 items-center justify-center [&_svg]:size-full', mode]} aria-hidden="true" set:html={svg} />

@@ -1,0 +1,18 @@
+---
+interface Props {
+  id?: string
+  type?: 'text' | 'email' | 'tel' | 'password' | 'url' | 'search' | 'number'
+  placeholder?: string
+  maxlength?: number
+}
+
+const { id, type = 'text', placeholder, maxlength } = Astro.props
+---
+
+<input
+  id={id}
+  type={type}
+  placeholder={placeholder}
+  maxlength={maxlength}
+  class="h-11 w-full border border-rule bg-transparent px-3 text-sm outline-none transition-colors placeholder:text-muted focus:border-ink"
+/>

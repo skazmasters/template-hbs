@@ -1,0 +1,17 @@
+---
+import Base from './Base.astro'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const { title = 'UI Kit', description } = Astro.props
+---
+
+<Base title={title} description={description}>
+  <slot />
+  <div data-copy-toast>Copied</div>
+  <script src="../scripts/theme.ts"></script>
+  <script src="../scripts/uikit.ts"></script>
+</Base>

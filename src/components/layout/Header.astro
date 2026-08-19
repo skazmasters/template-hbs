@@ -1,0 +1,33 @@
+---
+import data from '../../data/pages.json'
+import site from '../../data/site.json'
+import { withBase } from '../../lib/url'
+
+interface Props {
+  current?: string
+}
+
+const { current } = Astro.props
+const links = data.pages.filter((page) => page.slug !== 'uikit' && page.slug !== '404')
+---
+
+<header class="flex items-end justify-between gap-6 border-b border-rule px-[4vw] py-5">
+  <a href={withBase('home/')} class="font-serif text-2xl leading-none tracking-tight">
+    {site.name}
+  </a>
+  <nav class="flex flex-wrap gap-x-5 gap-y-1 font-mono text-[11px] tracking-[0.14em] uppercase">
+    {
+      links.map((page) => (
+        <a
+          href={withBase(page.href)}
+          class:list={[
+            'transition-colors hover:text-accent',
+            page.slug === current ? 'text-accent' : 'text-muted',
+          ]}
+        >
+          {page.title}
+        </a>
+      ))
+    }
+  </nav>
+</header>

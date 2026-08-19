@@ -1,0 +1,18 @@
+---
+interface Props {
+  id: string
+}
+
+const { id } = Astro.props
+---
+
+<dialog id={id}>
+  <button
+    class="mb-6 text-[11px] tracking-[0.16em] text-muted uppercase hover:text-ink"
+    type="button"
+    data-close
+  >
+    Close
+  </button>
+  <slot />
+</dialog>

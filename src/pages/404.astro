@@ -1,0 +1,14 @@
+---
+import Default from '../layouts/Default.astro'
+import { withBase } from '../lib/url'
+---
+
+<Default title="404" description="Missing plate.">
+  <main class="flex min-h-[calc(100svh-8rem)] flex-col justify-end px-[4vw] pb-16 pt-24">
+    <p class="mb-6 font-mono text-[11px] tracking-[0.18em] text-muted uppercase">Missing plate</p>
+    <h1 class="font-serif text-[clamp(5rem,16vw,11rem)] leading-[0.8] tracking-tight">404</h1>
+    <a href={withBase('home/')} class="mt-8 font-mono text-[11px] tracking-[0.16em] text-accent uppercase hover:text-accent-hover">
+      Back to home
+    </a>
+  </main>
+</Default>

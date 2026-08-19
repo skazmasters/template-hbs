@@ -1,0 +1,40 @@
+---
+import Checkbox from '../ui/Checkbox.astro'
+import Field from '../ui/Field.astro'
+import Input from '../ui/Input.astro'
+import Radio from '../ui/Radio.astro'
+import Select from '../ui/Select.astro'
+import Section from './Section.astro'
+import Subsection from './Subsection.astro'
+import Widget from './Widget.astro'
+---
+
+<Section title="Forms" id="forms">
+  <Subsection title="Fields">
+    <Widget title="Input" width={320}>
+      <Field label="Name" id="input_01" note="Shown under the field">
+        <Input id="input_01" placeholder="Ada Lovelace" />
+      </Field>
+    </Widget>
+    <Widget title="Select" width={320}>
+      <Field label="Country" id="select_01">
+        <Select id="select_01">
+          <option value="0">United States</option>
+          <option value="1">England</option>
+          <option value="2">Russia</option>
+        </Select>
+      </Field>
+    </Widget>
+  </Subsection>
+  <Subsection title="Choice">
+    <Widget title="Checkbox" width={220}>
+      <Checkbox id="checkbox" label="Subscribe" />
+    </Widget>
+    <Widget title="Radio" width={220}>
+      <div class="flex flex-col gap-2">
+        <Radio name="radio" value="01" label="Option A" />
+        <Radio name="radio" value="02" checked label="Option B" />
+      </div>
+    </Widget>
+  </Subsection>
+</Section>

@@ -1,0 +1,119 @@
+---
+import data from '../data/pages.json'
+import site from '../data/site.json'
+import Base from '../layouts/Base.astro'
+import { withBase } from '../lib/url'
+
+const isDev = import.meta.env.DEV
+const pages = [...data.pages].sort((a, b) => a.order - b.order)
+const first = pages[0]
+
+function previewSrc(page: (typeof pages)[number]) {
+  const order = String(page.order).padStart(2, '0')
+  return withBase(`preview/${order}_${page.slug}.png`)
+}
+
+const buildDate = new Intl.DateTimeFormat('en', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+}).format(new Date())
+---
+
+<Base title={`${site.name} — Index`}>
+  <div class="flex min-h-svh flex-col lg:h-svh lg:overflow-hidden">
+    <header class="flex items-baseline justify-between gap-6 border-b border-rule px-[4vw] py-5">
+      <p class="font-serif text-3xl leading-none">{site.name}</p>
+      <p class="max-w-sm text-right font-mono text-[11px] leading-relaxed tracking-[0.12em] text-muted uppercase">
+        Layout index · {pages.length} plates · {buildDate}
+      </p>
+    </header>
+
+    <main class="grid min-h-0 flex-1 lg:grid-cols-[minmax(18rem,0.42fr)_1fr]">
+      <ol class="border-rule px-[4vw] py-10 lg:overflow-y-auto lg:border-r">
+        {
+          pages.map((page, index) => (
+            <li
+              class="border-b border-rule last:border-b-0"
+              style={`--i: ${index}`}
+            >
+              <a
+                href={withBase(page.href)}
+                data-preview={isDev ? withBase(page.href) : previewSrc(page)}
+                class="group flex items-baseline justify-between gap-6 py-5 no-underline"
+              >
+                <span class="font-serif text-[clamp(2rem,4vw,3.4rem)] leading-[0.9] tracking-tight transition-colors group-hover:text-accent">
+                  {page.title}
+                </span>
+                <span class="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+
+      <aside class="relative hidden min-h-[50vh] bg-ink lg:block">
+        {
+          isDev ? (
+            <iframe
+              data-preview-frame
+              src={first ? withBase(first.href) : ''}
+              title="Page preview"
+              class="absolute inset-0 size-full border-0 bg-paper"
+            />
+          ) : (
+            <img
+              data-preview-frame
+              src={first ? previewSrc(first) : withBase('preview/1000_default.svg')}
+              alt="Page preview"
+              class="absolute inset-0 size-full object-cover object-top"
+            />
+          )
+        }
+        <p class="absolute bottom-5 left-5 z-10 font-mono text-[11px] tracking-[0.16em] text-paper/70 uppercase">
+          Live plate
+        </p>
+      </aside>
+    </main>
+  </div>
+
+  <style>
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    li {
+      animation: rise 0.6s ease both;
+      animation-delay: calc(var(--i, 0) * 40ms);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      li {
+        animation: none;
+      }
+    }
+  </style>
+
+  <script>
+    const frame = document.querySelector('[data-preview-frame]')
+    document.querySelectorAll<HTMLAnchorElement>('[data-preview]').forEach((link) => {
+      const show = () => {
+        const url = link.dataset.preview
+        if (!url || !frame) return
+        if (frame instanceof HTMLIFrameElement) frame.src = url
+        if (frame instanceof HTMLImageElement) frame.src = url
+      }
+      link.addEventListener('pointerenter', show)
+      link.addEventListener('focus', show)
+    })
+  </script>
+</Base>

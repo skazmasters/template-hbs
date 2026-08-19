@@ -1,0 +1,45 @@
+---
+import ExamplePopup from '../components/popups/Example.astro'
+import Buttons from '../components/uikit/Buttons.astro'
+import Colors from '../components/uikit/Colors.astro'
+import Features from '../components/uikit/Features.astro'
+import Forms from '../components/uikit/Forms.astro'
+import Modals from '../components/uikit/Modals.astro'
+import Widgets from '../components/uikit/Widgets.astro'
+import Uikit from '../layouts/Uikit.astro'
+
+const nav = [
+  { href: '#colors', label: 'Colors' },
+  { href: '#buttons', label: 'Buttons' },
+  { href: '#forms', label: 'Forms' },
+  { href: '#widgets', label: 'Widgets' },
+  { href: '#modals', label: 'Dialog' },
+  { href: '#features', label: 'Links' },
+]
+---
+
+<Uikit description="Colors, buttons, forms, and native dialogs.">
+  <div class="min-h-svh lg:grid lg:grid-cols-[14rem_1fr]">
+    <aside class="border-b border-rule px-[4vw] py-8 lg:border-r lg:border-b-0 lg:px-8">
+      <p class="font-serif text-2xl">UI Kit</p>
+      <nav class="mt-8 flex flex-col gap-3 font-mono text-[11px] tracking-[0.14em] uppercase">
+        {
+          nav.map((item) => (
+            <a class="text-muted transition-colors hover:text-accent" href={item.href}>
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </aside>
+    <div class="px-[4vw] py-10 lg:px-12">
+      <Colors />
+      <Buttons />
+      <Forms />
+      <Widgets />
+      <Modals />
+      <Features />
+    </div>
+  </div>
+  <ExamplePopup id="example" />
+</Uikit>

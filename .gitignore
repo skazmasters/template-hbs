@@ -1,6 +1,5 @@
 node_modules
-.tmp
-.sass-cache
+.astro
 .idea
 npm-debug.log
 dist
@@ -8,3 +7,6 @@ build
 logs
 .DS_Store
 package-lock.json
+yarn-error.log
+public/preview/*.png
+
